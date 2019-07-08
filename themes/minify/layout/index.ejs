@@ -1,0 +1,91 @@
+
+<div class="navigasi-tengah">
+<div class="container">
+<div class="row">
+<ul>
+<li>
+<!-- Begin Logo -->
+<a class="navbar-brand" href="/">
+<img alt="logo" src="<%- config.root %><%- theme.default_logo %>" style="max-height: 30px;">
+</a>
+<!-- End Logo --></li>
+</ul>
+</div>
+</div>
+</div>
+
+<div class="background-tukutu">
+	<!-- Begin Site Title
+	================================================== -->
+	<div class="container" style="padding-top:3rem;">
+		<div class="row">
+		  <div class="col-12 col-md-8">
+				<div class="homepagehead">
+					<h1 class="sitetitle"><%= config.title %></h1>
+					<p class="lead">
+						 <% if (config.subtitle){ %><%= config.subtitle %><% } %>
+					</p>
+				</div>
+			</div>
+		  <div class="col-6 col-md-4">
+				<img src="<%- config.root %><%- theme.icon_theme %>" alt="Austrosein" class="top-down-animation">
+			</div>
+		</div>
+	<!-- End Site Title
+	================================================== -->
+</div>
+<!-- Begin Nav
+================================================== -->
+<nav class="navbar navbar-toggleable-md navbar-light bg-white  mediumnavigation">
+<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+<span class="navbar-toggler-icon"></span>
+</button>
+<div class="container">
+
+	<div class="collapse navbar-collapse" id="navbarsExampleDefault">
+		<!-- Begin Menu -->
+		<ul class="navbar-nav mr-auto">
+			<% for (var i in theme.menu){ %>
+									 <li class="nav-item active">
+											 <a class="nav-link " href="<%- theme.menu[i].url ? url_for(theme.menu[i].url) : url_for(theme.menu[i]) %>">
+													 <% if (theme.menu[i].icon) { %>
+															 <i class="fa fa-<%= theme.menu[i].icon %> fa-stack-2x"></i>
+													 <% } else { %>
+															 <%= i %>
+													 <% } %>
+											 </a>
+									 </li>
+							 <% } %>
+							  <%- partial('_partial/partial-menu') %>
+		</ul>
+
+		<!-- End Menu -->
+	</div>
+</div>
+</nav>
+<!-- End Nav
+================================================== -->
+
+<!-- Begin Site Title
+================================================== -->
+<div class="container post768" >
+
+<!-- End Site Title
+================================================== -->
+<section class="recent-posts">
+<div class="section-title">
+	<h2><span>All Stories</span></h2>
+</div>
+<div class="card-columns listrecent">
+
+<% page.posts.each(function(item){ %>
+    <%- partial('_partial/article-excerpt', {item: item}) %>
+<% }); %>
+</div>
+</section>
+<!-- End List Posts
+================================================== -->
+
+<%- partial('_partial/pagination') %>
+</div>
+<%- partial('_partial/footer.ejs') %>

@@ -1,0 +1,31 @@
+
+
+<!-- Custom Code -->
+<%- js('js/jquery.min.js') %>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+<!-- bootstrap -->
+<%- js('js/bootstrap.min.js') %>
+
+<!-- ie10 -->
+<%- js('js/ie10-viewport-bug-workaround.js') %>
+<!-- ie10 -->
+<%- js('js/timeago.js') %>
+<script type="text/javascript">
+jQuery(document).ready(function() {
+jQuery("time.timeago").timeago();
+});
+</script>
+<!-- Disqus Comments -->
+<% if (theme.disqus_shortname){ %>
+    <script type="text/javascript">
+        var disqus_shortname = '<%= theme.disqus_shortname %>';
+        (function(){
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/<% if (page.comments){ %>embed.js<% } else { %>count.js<% } %>';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        }());
+    </script>
+<% } %>
